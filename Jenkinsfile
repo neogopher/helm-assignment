@@ -20,6 +20,7 @@ pipeline {
             steps {
                 sh 'helm dependency update helm-assignment/newchart'
                 sh 'helm lint helm-assignment/newchart'
+		sh 'rm *.tgz'
                 sh 'helm package helm-assignment/newchart'
                 sh 'helm uninstall newchart'
                 sh 'helm install newchart *.tgz'
